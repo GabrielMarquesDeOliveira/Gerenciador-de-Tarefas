@@ -1,16 +1,34 @@
-# Gerenciador de Tarefas — Guia Rápido
+# Gerenciador de Tarefas - Guia Rápido
 
 Este sistema permite você criar, visualizar, editar, concluir e deletar tarefas de forma simples e rápida. Tudo protegido por login, com notificações em tempo real e fácil de rodar.
 
-## Como usar
+## Instalação
 
-### 1. Instale o Docker Desktop
+### 1. Instale as Dependências
 
-Baixe e instale o Docker Desktop para Windows. Reinicie o computador após instalar.
+Antes de executar o projeto, você precisa instalar as dependências tanto do backend quanto do frontend:
 
-### 2. Execute o sistema
+Para o backend:
 
-Abra o terminal na pasta do projeto e rode:
+```sh
+cd backend
+npm install
+```
+
+Para o frontend:
+
+```sh
+cd frontend
+npm install
+```
+
+### 2. Instale o Docker Desktop
+
+Baixe e instale o Docker Desktop para Windows. Reinicie o computador após a instalação.
+
+### 3. Execute o Sistema
+
+Abra o terminal na pasta do projeto e execute:
 
 ```sh
 docker compose up --build
@@ -21,11 +39,11 @@ Pronto! O sistema estará disponível em:
 - Backend: [http://localhost:4000](http://localhost:4000)
 - Frontend: [http://localhost:3000](http://localhost:3000)
 
-### 3. Login e Cadastro
+### 4. Login e Cadastro
 
 Ao abrir o frontend, cadastre-se com nome, email e senha. Depois faça login para acessar suas tarefas.
 
-### 4. Gerencie suas tarefas
+### 5. Gerencie suas Tarefas
 
 - Crie novas tarefas
 - Edite ou exclua tarefas
@@ -33,7 +51,7 @@ Ao abrir o frontend, cadastre-se com nome, email e senha. Depois faça login par
 - Filtre por status (pendente/concluída)
 - Receba notificações em tempo real
 
-### 5. Testes automatizados
+### 6. Testes Automatizados
 
 Para rodar os testes do backend:
 
@@ -50,8 +68,8 @@ npm test
 
 ## Dicas e Observações
 
-- O sistema usa autenticação JWT para proteger suas tarefas.
-- Notificações em tempo real são feitas via WebSockets (Socket.IO).
+- O sistema usa autenticação JWT para proteger suas tarefas
+- Notificações em tempo real são feitas via WebSockets (Socket.IO)
 - Para funcionar o WebSocket no frontend, inclua no `public/index.html`:
 
 ```html
@@ -65,7 +83,7 @@ DATABASE_URL=postgres://postgres:postgres@db:5432/tarefas
 JWT_SECRET=sua_chave_secreta
 ```
 
-## Principais arquivos
+## Arquivos Principais
 
 - `backend/src/index.js`: Inicializa servidor, rotas e WebSockets
 - `backend/src/routes.js`: Rotas de tarefas

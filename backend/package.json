@@ -4,7 +4,11 @@
   "main": "src/index.js",
   "scripts": {
     "start": "node src/index.js",
-    "test": "jest"
+    "test": "jest",
+    "test:coverage": "jest --coverage",
+    "dev": "nodemon src/index.js",
+    "docs": "jsdoc -c jsdoc.json",
+    "swagger-autogen": "node swagger.js"
   },
   "dependencies": {
     "express": "^4.18.2",
@@ -12,7 +16,13 @@
     "jsonwebtoken": "^9.0.2",
     "cors": "^2.8.5",
     "socket.io": "^4.7.5",
-    "dotenv": "^16.4.5"
+    "dotenv": "^16.4.5",
+    "bcrypt": "^5.1.1",
+    "joi": "^17.11.0",
+    "helmet": "^7.1.0",
+    "winston": "^3.11.0",
+    "swagger-ui-express": "^4.6.3",
+    "swagger-jsdoc": "^6.2.8"
   },
   "devDependencies": {
     "jest": "^29.7.0",
