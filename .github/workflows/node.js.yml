@@ -9,6 +9,9 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: read
 
     strategy:
       matrix:
@@ -26,18 +29,22 @@ jobs:
       run: |
         cd backend
         npm install
+        chmod +x node_modules/.bin/*
         
     - name: Run Backend Tests
       run: |
         cd backend
+        chmod +x node_modules/.bin/*
         npm test
         
     - name: Install Frontend Dependencies
       run: |
         cd frontend
         npm install
+        chmod +x node_modules/.bin/*
         
     - name: Run Frontend Tests
       run: |
         cd frontend
+        chmod +x node_modules/.bin/*
         npm test -- --watchAll=false
