@@ -9,9 +9,21 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      packages: read
+
+    services:
+      postgres:
+        image: postgres:latest
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: tarefas_test
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
 
     strategy:
       matrix:
@@ -29,22 +41,25 @@ jobs:
       run: |
         cd backend
         npm install
-        chmod +x node_modules/.bin/*
         
     - name: Run Backend Tests
+      env:
+        DB_USER: postgres
+        DB_PASSWORD: postgres
+        DB_HOST: localhost
+        DB_PORT: 5432
+        DB_DATABASE: tarefas_test
+        JWT_SECRET: testsecret
       run: |
         cd backend
-        chmod +x node_modules/.bin/*
         npm test
         
     - name: Install Frontend Dependencies
       run: |
         cd frontend
         npm install
-        chmod +x node_modules/.bin/*
         
     - name: Run Frontend Tests
       run: |
         cd frontend
-        chmod +x node_modules/.bin/*
         npm test -- --watchAll=false
